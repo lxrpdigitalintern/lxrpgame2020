@@ -253,6 +253,7 @@ public class MainManager : MonoBehaviour
                 SpawnManager.Instance.StartSpawn(ESpawnSelection.DONUTS);
                 break;
             case EMissionType.ANSWER_QUESTIONS:
+                UIManager.Instance.ShowDonuts(true);
                 SpawnManager.Instance.StartSpawn(ESpawnSelection.QUESTION_CHARACTERS);
                 break;
         }
@@ -338,7 +339,7 @@ public class MainManager : MonoBehaviour
         switch (eScoreEvent)
         {
             case EScoreEvent.GAME_START:
-                score = 10;
+                score = 50;
                 UIManager.Instance.UpdateScore(score);
                 break;
 
