@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Question 1", menuName = "ScriptableObjects/QuestionInfo", order = 2)]
 public class SO_QuestionInfo : ScriptableObject
@@ -11,6 +12,8 @@ public class SO_QuestionInfo : ScriptableObject
     public char answer;
     public string correctText;
     public string incorrectText;
+    public string InformationText;
+    public Sprite questionImage;
 
     private bool isSelected = false;
     public bool IsSelected { get => isSelected; set => isSelected = value; }
