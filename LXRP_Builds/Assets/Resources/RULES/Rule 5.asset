@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruleNo: 5
   ruleText: "Be vigilant when you\u2019ve got your headphones in and avoid playing
-    on your phone while you\u2019re walking. Be safe and pay attention."
+    on your phone while you\u2019re walking."
   isCorrect: 0
+  CorrectText: Correct! The best way to stay safe is to pay attention.
+  answerIsTrue: 1

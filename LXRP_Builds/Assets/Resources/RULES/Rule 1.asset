@@ -16,3 +16,5 @@ MonoBehaviour:
   ruleText: It is illegal to go on train tracks unless you are walking across a pedestrian
     level crossing or driving across a level crossing.
   isCorrect: 0
+  CorrectText: Correct! Be sure to only cross train tracks at a pedestrian crossing.
+  answerIsTrue: 1

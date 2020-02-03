@@ -253,7 +253,7 @@ public class MainManager : MonoBehaviour
                 SpawnManager.Instance.StartSpawn(ESpawnSelection.DONUTS);
                 break;
             case EMissionType.ANSWER_QUESTIONS:
-                UIManager.Instance.ShowDonuts(true);
+                //UIManager.Instance.ShowDonuts(true);
                 SpawnManager.Instance.StartSpawn(ESpawnSelection.QUESTION_CHARACTERS);
                 break;
         }
@@ -293,16 +293,21 @@ public class MainManager : MonoBehaviour
         return managerState;
     }
 
-    public void OnRuleSelect(bool isSelected, SO_RuleInfo info)
+    public int GetNumSelectedRules()
+    {
+        return selectedRules.Count;
+    }
+
+    public void OnRuleSelect(bool isSelected, SO_RuleInfo info, bool isTrueToggle)
     {
         string tagVal = "";
                 
         info.IsSelected = isSelected;
 
-        if (isSelected && !selectedRules.Contains(info))
-        {
+        //if (isSelected && !selectedRules.Contains(info))
+        //{
             selectedRules.Add(info);
-        }
+        //}
 
         if (isSelected)
         {
@@ -318,11 +323,21 @@ public class MainManager : MonoBehaviour
         }
         UIManager.Instance.UpdateRules(selectedRules.Count);
 
-        if (selectedRules.Count == NUM_RULEBOOKS)
+        if ((isTrueToggle && info.answerIsTrue) || (!isTrueToggle && !info.answerIsTrue))
         {
-            GameObject.FindGameObjectWithTag("RuleUI").SetActive(false);
-            MainManager.Instance.SetState(EGameState.QUEST_COMPLETE);
+            UIManager.Instance.UpdateRulebookText(info.CorrectText);
+            UpdateScore(EScoreEvent.CORRECT_TRUEORFALSE);
         }
+        else
+        {
+            UIManager.Instance.UpdateRulebookText("Sorry, but that is incorrect.");
+        }
+   
+        //if (selectedRules.Count == NUM_RULEBOOKS)
+        //{
+            //GameObject.FindGameObjectWithTag("RuleUI").SetActive(false);
+            //MainManager.Instance.SetState(EGameState.QUEST_COMPLETE);
+        //}
     }
 
     public void SetVehicleSpeed(float inSpeed)
@@ -353,6 +368,10 @@ public class MainManager : MonoBehaviour
                 UIManager.Instance.UpdateScore(score);
                 break;
             case EScoreEvent.CORRECT_QUESTION:
+                score += 10;
+                UIManager.Instance.UpdateScore(score);
+                break;
+            case EScoreEvent.CORRECT_TRUEORFALSE:
                 score += 10;
                 UIManager.Instance.UpdateScore(score);
                 break;

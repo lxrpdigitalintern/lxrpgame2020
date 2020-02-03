@@ -238,6 +238,9 @@ public abstract class ABPlayerScript : MonoBehaviour, IClickable
                 Outline outline = station.GetComponent<Outline>();
                 outline.OutlineWidth = 7.0f;
                 break;
+            case EMissionType.ANSWER_QUESTIONS:
+                UIManager.Instance.ShowDonuts(true);
+                break;
             default:
                 break;
         }

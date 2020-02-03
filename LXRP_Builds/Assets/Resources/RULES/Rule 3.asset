@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Rule 3
   m_EditorClassIdentifier: 
   ruleNo: 3
-  ruleText: Trains are sometimes called 'grey ghosts' because of how quiet they are.
-    You often can't hear or see them until they are right next to you.
+  ruleText: Stop, look and listen for construction vehicles like trucks and bull dozers
+    so you can stay out of their way.
   isCorrect: 0
+  CorrectText: Correct! Always beware of construction equipment
+  answerIsTrue: 1

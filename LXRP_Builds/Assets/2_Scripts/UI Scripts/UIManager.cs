@@ -58,6 +58,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Toggle ruleSelectionFalse = null;
     [SerializeField] Text ruleText = null;
     [SerializeField] Text ruleNo = null;
+    [SerializeField] Button ruleOkButton = null;
     private SO_RuleInfo ruleInfo = null;
     private int numRulebooksCollected = 0;
 
@@ -68,7 +69,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button bButton = null;
     [SerializeField] Button cButton = null;
     [SerializeField] Button okButton = null;
-    [SerializeField] List<GameObject> donuts = new List<GameObject>(); 
+    [SerializeField] List<GameObject> donuts = new List<GameObject>();
+    [SerializeField] Button starButton = null;
+    [SerializeField] Image startImage = null;
 
     private SpeechTextUI speechTextComponent;
     [SerializeField] GameObject smallMenu = null;
@@ -84,7 +87,9 @@ public class UIManager : MonoBehaviour
         resetButton.onClick.AddListener(OnResetButtonClicked);
         backToMenuButton.onClick.AddListener(OnBackToMenuButtonClicked);
 
-        ruleSelectionTrue.onValueChanged.AddListener(OnRuleSelection);
+        ruleSelectionTrue.onValueChanged.AddListener(OnRuleSelectionTrue);
+        ruleSelectionFalse.onValueChanged.AddListener(OnRuleSelectionFalse);
+        ruleOkButton.onClick.AddListener(OnRuleOKClicked);
         aButton.onClick.AddListener(OnQuestionAClicked);
         bButton.onClick.AddListener(OnQuestionBClicked);
         cButton.onClick.AddListener(OnQuestionCClicked);
@@ -97,14 +102,46 @@ public class UIManager : MonoBehaviour
         
     }
 
-    private void OnRuleSelection(bool isSlected)
+    private void OnRuleSelectionTrue(bool isSlected)
     {
-        MainManager.Instance.OnRuleSelect(isSlected, ruleInfo);
+        MainManager.Instance.OnRuleSelect(isSlected, ruleInfo, true);
+    }
+
+    private void OnRuleSelectionFalse(bool isSlected)
+    {
+        MainManager.Instance.OnRuleSelect(isSlected, ruleInfo, false);
     }
 
     public bool AllRuleBooksCollected()
     {
         return numRulebooksCollected == MAX_NUM_RULEBOOKS;
+    }
+
+    public void UpdateRulebookText(string inText)
+    {
+        ruleText.text = inText;
+        ruleSelectionFalse.gameObject.SetActive(false);
+        ruleSelectionTrue.gameObject.SetActive(false);
+        ruleOkButton.gameObject.SetActive(true);
+    }
+
+    public void OnRuleOKClicked()
+    {
+        ruleText.text = "";
+        ResetRulebookUI();
+        ruleBookUI.gameObject.SetActive(false);
+        if (MainManager.Instance.GetNumSelectedRules() == MAX_NUM_RULEBOOKS)
+            MainManager.Instance.SetState(EGameState.QUEST_COMPLETE);
+    }
+
+    private void ResetRulebookUI()
+    {
+        ruleOkButton.gameObject.SetActive(false);
+        ruleSelectionTrue.gameObject.SetActive(true);
+        ruleSelectionTrue.isOn = false;
+        ruleSelectionFalse.gameObject.SetActive(true);
+        ruleSelectionFalse.isOn = false;
+        starButton.gameObject.SetActive(false);
     }
 
     private void OnQuestionAClicked()
@@ -140,7 +177,10 @@ public class UIManager : MonoBehaviour
             backToMenuButton.GetComponent<Button>().onClick.RemoveListener(OnBackToMenuButtonClicked);
 
         if (ruleSelectionTrue != null)
-            ruleSelectionTrue.GetComponent<Toggle>().onValueChanged.RemoveListener(OnRuleSelection);
+            ruleSelectionTrue.GetComponent<Toggle>().onValueChanged.RemoveListener(OnRuleSelectionTrue);
+
+        if (ruleSelectionFalse != null)
+            ruleSelectionFalse.GetComponent<Toggle>().onValueChanged.RemoveListener(OnRuleSelectionFalse);
     }
 
     #region MainMenuUI Methods
@@ -242,6 +282,7 @@ public class UIManager : MonoBehaviour
         ruleNo.text = "#" + ruleInfo.ruleNo;
         ruleText.text = ruleInfo.ruleText;
         ruleSelectionTrue.isOn = ruleInfo.IsSelected;
+        ResetRulebookUI();
         ruleBookUI.SetActive(true);
     }
 
@@ -300,6 +341,7 @@ public class UIManager : MonoBehaviour
         bButton.gameObject.SetActive(toggle);
         cButton.gameObject.SetActive(toggle);
         okButton.gameObject.SetActive(!toggle);
+        starButton.gameObject.SetActive(!toggle);
     }
 
     public void ShowDonuts(bool show)

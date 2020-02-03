@@ -8,6 +8,7 @@ public class SO_RuleInfo : ScriptableObject
     public int ruleNo;
     public string ruleText;
     public bool isCorrect;
+    public string CorrectText;
     public bool answerIsTrue;
 
     private bool isSelected = false;
