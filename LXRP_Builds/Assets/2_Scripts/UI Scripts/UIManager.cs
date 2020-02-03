@@ -54,7 +54,8 @@ public class UIManager : MonoBehaviour
     // Rule UI Members
     [Space]
     [SerializeField] GameObject ruleBookUI = null;
-    [SerializeField] Toggle ruleSelection = null;
+    [SerializeField] Toggle ruleSelectionTrue = null;
+    [SerializeField] Toggle ruleSelectionFalse = null;
     [SerializeField] Text ruleText = null;
     [SerializeField] Text ruleNo = null;
     private SO_RuleInfo ruleInfo = null;
@@ -67,6 +68,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button bButton = null;
     [SerializeField] Button cButton = null;
     [SerializeField] Button okButton = null;
+    [SerializeField] List<GameObject> donuts = new List<GameObject>(); 
 
     private SpeechTextUI speechTextComponent;
     [SerializeField] GameObject smallMenu = null;
@@ -82,7 +84,7 @@ public class UIManager : MonoBehaviour
         resetButton.onClick.AddListener(OnResetButtonClicked);
         backToMenuButton.onClick.AddListener(OnBackToMenuButtonClicked);
 
-        ruleSelection.onValueChanged.AddListener(OnRuleSelection);
+        ruleSelectionTrue.onValueChanged.AddListener(OnRuleSelection);
         aButton.onClick.AddListener(OnQuestionAClicked);
         bButton.onClick.AddListener(OnQuestionBClicked);
         cButton.onClick.AddListener(OnQuestionCClicked);
@@ -137,8 +139,8 @@ public class UIManager : MonoBehaviour
         if (backToMenuButton != null)
             backToMenuButton.GetComponent<Button>().onClick.RemoveListener(OnBackToMenuButtonClicked);
 
-        if (ruleSelection != null)
-            ruleSelection.GetComponent<Toggle>().onValueChanged.RemoveListener(OnRuleSelection);
+        if (ruleSelectionTrue != null)
+            ruleSelectionTrue.GetComponent<Toggle>().onValueChanged.RemoveListener(OnRuleSelection);
     }
 
     #region MainMenuUI Methods
@@ -239,7 +241,7 @@ public class UIManager : MonoBehaviour
         ruleInfo = info;
         ruleNo.text = "#" + ruleInfo.ruleNo;
         ruleText.text = ruleInfo.ruleText;
-        ruleSelection.isOn = ruleInfo.IsSelected;
+        ruleSelectionTrue.isOn = ruleInfo.IsSelected;
         ruleBookUI.SetActive(true);
     }
 
@@ -279,7 +281,7 @@ public class UIManager : MonoBehaviour
         questionComponent.SetActive(true);
         questionComponent.SetCurrentQuestion(inIndex);
         SetScenarioText();
-
+        HideDonut(inIndex);
     }
 
     public void HideQuestionUI()
@@ -300,7 +302,18 @@ public class UIManager : MonoBehaviour
         okButton.gameObject.SetActive(!toggle);
     }
 
+    public void ShowDonuts(bool show)
+    {
+        foreach (GameObject d in donuts)
+        {
+            d.gameObject.SetActive(show);
+        }
+    }
 
+    public void HideDonut(int index)
+    {
+        donuts[index].gameObject.SetActive(false);
+    }
 
     private bool CheckMissingRefs()
     {
