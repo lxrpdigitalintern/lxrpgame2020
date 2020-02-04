@@ -71,7 +71,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button okButton = null;
     [SerializeField] List<GameObject> donuts = new List<GameObject>();
     [SerializeField] Button starButton = null;
-    [SerializeField] Image startImage = null;
+    [SerializeField] List<GameObject> starImages = new List<GameObject>();
+    [SerializeField] Button starImageCloseButton = null;
+    private int currentQuestionIndex;
 
     private SpeechTextUI speechTextComponent;
     [SerializeField] GameObject smallMenu = null;
@@ -94,6 +96,8 @@ public class UIManager : MonoBehaviour
         bButton.onClick.AddListener(OnQuestionBClicked);
         cButton.onClick.AddListener(OnQuestionCClicked);
         okButton.onClick.AddListener(OnOkButtonClicked);
+        starButton.onClick.AddListener(OnStarButtonClicked);
+        starImageCloseButton.onClick.AddListener(OnStarButtonCloseClicked);
 
 
         TextElements = FindObjectsOfType<TextMeshProUGUI>();
@@ -101,6 +105,22 @@ public class UIManager : MonoBehaviour
         //smallMenu.SetActive(false);
         
     }
+
+    private void OnStarButtonClicked()
+    {
+        currentQuestionIndex = questionComponent.GetCurrentQuestionIndex();
+
+        starImages[currentQuestionIndex].SetActive(true);
+        starImageCloseButton.gameObject.SetActive(true);
+    }
+
+    private void OnStarButtonCloseClicked()
+    {
+        starImages[currentQuestionIndex].SetActive(false);
+        starImageCloseButton.gameObject.SetActive(false);
+    }
+
+
 
     private void OnRuleSelectionTrue(bool isSlected)
     {

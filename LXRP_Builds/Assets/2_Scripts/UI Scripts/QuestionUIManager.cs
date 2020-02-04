@@ -18,6 +18,9 @@ public class QuestionUIManager : MonoBehaviour
     [SerializeField] int activeQuestionIndex = 0;
     [SerializeField] int numberOfQuestionsAnswered = 0;
     private SO_QuestionInfo currentQuestion = null;
+    [SerializeField] TextMeshProUGUI aOption;
+    [SerializeField] TextMeshProUGUI bOption;
+    [SerializeField] TextMeshProUGUI cOption;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,11 @@ public class QuestionUIManager : MonoBehaviour
         
     }
 
+    public int GetCurrentQuestionIndex()
+    {
+        return activeQuestionIndex;
+    }
+
     public void SetActive(bool inActive)
     {
         questionUI.SetActive(inActive);
@@ -40,6 +48,9 @@ public class QuestionUIManager : MonoBehaviour
     {
         scenarioText.text = currentQuestion.questionText;
         scenarioNumberText.text = (currentQuestion.questionNo + 1).ToString();
+        aOption.text = currentQuestion.aOption;
+        bOption.text = currentQuestion.bOption;
+        cOption.text = currentQuestion.cOption;
     }
 
     public void SetCurrentQuestion(int index)
