@@ -46,6 +46,7 @@ public class QuestionUIManager : MonoBehaviour
 
     public void SetScenarioText()
     {
+        ShowOptionsText(true);
         scenarioText.text = currentQuestion.questionText;
         scenarioNumberText.text = (currentQuestion.questionNo + 1).ToString();
         aOption.text = currentQuestion.aOption;
@@ -53,13 +54,20 @@ public class QuestionUIManager : MonoBehaviour
         cOption.text = currentQuestion.cOption;
     }
 
+    public void ShowOptionsText(bool toggle)
+    {
+        aOption.gameObject.SetActive(toggle);
+        bOption.gameObject.SetActive(toggle);
+        cOption.gameObject.SetActive(toggle);
+    }
+
     public void SetCurrentQuestion(int index)
     {
         activeQuestionIndex = index;
-        GetCurrentQuestioInfo();
+        GetCurrentQuestionInfo();
     }
 
-    private void GetCurrentQuestioInfo()
+    private void GetCurrentQuestionInfo()
     {
         currentQuestion = SpawnManager.Instance.GetQuestion(activeQuestionIndex);
     }
@@ -73,6 +81,7 @@ public class QuestionUIManager : MonoBehaviour
 
     public void OnQuestionButtonClicked(char inButtonLetter)
     {
+        ShowOptionsText(false);
         if (currentQuestion.answer == inButtonLetter)
             DisplayCorrectText(true);
         else
@@ -93,6 +102,7 @@ public class QuestionUIManager : MonoBehaviour
         {
             scenarioText.text = currentQuestion.incorrectText;
         }
+        scenarioText.text += "<br><br>" + currentQuestion.InformationText;
     }
 
 

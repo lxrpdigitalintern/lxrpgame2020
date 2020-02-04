@@ -833,6 +833,7 @@ SkinnedMeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1068,7 +1069,7 @@ Transform:
   m_Children:
   - {fileID: 449948}
   - {fileID: 430016}
-  - {fileID: 6673120137703796443}
+  - {fileID: 1298796987929458261}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1084,7 +1085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e0eee71ebd5bc41bd8ccd136935376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerComponent: {fileID: 6673120137703796442}
+  pointerComponent: {fileID: 1298796987929458265}
   playerInfo: {fileID: 11400000, guid: c3a8da8033c7363428c3c50ad60605bf, type: 2}
 --- !u!95 &9568514
 Animator:
@@ -1887,13 +1888,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c34275f08b988524394a68b917349a0b, type: 3}
---- !u!1 &6673120137703796442 stripped
+--- !u!1 &1298796987929458265 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5664947318721796231, guid: c34275f08b988524394a68b917349a0b,
     type: 3}
   m_PrefabInstance: {fileID: 1298796987929458269}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6673120137703796443 stripped
+--- !u!4 &1298796987929458261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5664947318721796230, guid: c34275f08b988524394a68b917349a0b,
     type: 3}

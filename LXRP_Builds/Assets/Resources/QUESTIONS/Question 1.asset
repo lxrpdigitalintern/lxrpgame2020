@@ -20,9 +20,9 @@ MonoBehaviour:
   cOption: C) both a & b
   isCorrect: 0
   answer: 67
-  correctText: Correct
-  incorrectText: Wrong
-  InformationText: 'Did you know, the new Mentone gardens will have wider paths and
+  correctText: That is corret! Well done.
+  incorrectText: I'm sorry but that is incorrect.
+  InformationText: Did you know, the new Mentone gardens will have wider paths and
     a stage. There will also be a new heritage bridge over the new rail trench. Select
-    the star to see it. '
+    the star to see it. Press "OK" to return to the level.
   questionImage: {fileID: 0}

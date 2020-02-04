@@ -8207,9 +8207,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   starImageCloseButton: {fileID: 1129079423}
-  aOption: {fileID: 1960589718}
-  bOption: {fileID: 1187994540}
-  cOption: {fileID: 1426169080}
   smallMenu: {fileID: 38297852}
 --- !u!114 &617138903
 MonoBehaviour:
@@ -8245,6 +8242,9 @@ MonoBehaviour:
   scenarioNumberText: {fileID: 276481225}
   activeQuestionIndex: 0
   numberOfQuestionsAnswered: 0
+  aOption: {fileID: 1960589718}
+  bOption: {fileID: 1187994540}
+  cOption: {fileID: 1426169080}
 --- !u!1 &635074443
 GameObject:
   m_ObjectHideFlags: 0
@@ -10661,7 +10661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &832228600
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15729,7 +15729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115, y: 50}
+  m_AnchoredPosition: {x: 50, y: 70}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187994540
@@ -15788,7 +15788,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -19712,7 +19712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 310, y: 50}
+  m_AnchoredPosition: {x: 220, y: 70}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1426169080
@@ -19771,7 +19771,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -26751,7 +26751,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 50}
+  m_AnchoredPosition: {x: -120, y: 70}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1960589718
@@ -26810,7 +26810,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0

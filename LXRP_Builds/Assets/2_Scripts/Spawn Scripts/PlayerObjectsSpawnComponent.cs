@@ -105,7 +105,7 @@ public class PlayerObjectsSpawnComponent : MonoBehaviour
 
         // Increment index to load next level's player when ready
         nextPlayer++;
- 
+
         MainManager.Instance.SetState(EGameState.PLAYER_START, spawn.GetComponent<ABPlayerScript>());
     }
 }

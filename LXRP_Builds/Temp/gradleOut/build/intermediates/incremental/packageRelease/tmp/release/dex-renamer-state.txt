@@ -1,0 +1,4 @@
+#Tue Feb 04 14:37:32 AEDT 2020
+base.0=C\:\\Users\\aamsh417\\Documents\\repos\\LXRP_Digital_Intern_New\\LXRP_Builds\\Temp\\gradleOut\\build\\intermediates\\transforms\\dexMerger\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex
