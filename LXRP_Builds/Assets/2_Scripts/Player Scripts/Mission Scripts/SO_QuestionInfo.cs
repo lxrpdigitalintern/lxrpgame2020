@@ -8,6 +8,9 @@ public class SO_QuestionInfo : ScriptableObject
 {
     public int questionNo;
     public string questionText;
+    public string aOption;
+    public string bOption;
+    public string cOption;
     public bool isCorrect;
     public char answer;
     public string correctText;
